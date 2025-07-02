@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+    // 제목
+    .pageTitle{
+        margin-top: 120px;
+    }
+
+    // 검색창
+    .searchBox{
+        margin: 20px auto;
+        text-align: center;
+
+        // 입력창
+        input{padding: 10px;}
+
+        // 검색 버튼
+        button{padding: 10px 20px;}
+    }
+    .tvBox{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin: 50px 5%;
+    }
+
+    .tvBox .imgTv{
+        padding-top: 180%;
+        border-radius: 20px;
+        position: relative;
+    }
+}

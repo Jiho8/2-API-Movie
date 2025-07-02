@@ -1,0 +1,229 @@
+.detail{
+    position: reletive;
+}
+
+// 뒤로가기 버튼
+.detailBackBtn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    position: absolute;
+    top: 115px; left: 50px;
+    width: 22px; height: 22px;
+    cursor: pointer;
+    
+    img{width: 100%; height: 100%; object-fit: contain;}
+}
+
+// background
+.detailBackground::after{
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 100px;
+    background-image: linear-gradient(0deg, #000, transparent);
+}
+
+// detail 내용
+.detailContents{
+    margin-top: -350px;
+    z-index: 900;
+    padding: 0 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+}
+
+// poster image
+.detailContents-left{
+    width: 45%; height: auto; max-height: 630px;
+    border-radius: 18px;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.detailContents-right{
+    width: 70%;
+
+    h3{font-size: 48px;}
+
+    // 개봉일 및 런타임
+    .detailDateNTime{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin: 10px 0 20px;
+        font-size: 20px;
+    }
+    
+    // 장르
+    .detailGenres{
+        display: flex;
+        align-items: center;
+    
+        p{
+            padding: 7px 14px;
+            border: 1px solid #eee;
+            border-radius: 25px;
+            margin-right: 15px;
+        }
+    }
+
+    // overview
+    .detailOverview{
+        display: inline-block;
+        margin: 20px 0;
+        line-height: 1.4;
+    }
+
+    // 별점
+    .detailVote{
+        margin-bottom: 20px;
+    }
+
+    // 배우
+    .detailCastList{
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+
+        li{
+            width: 150px; height: auto;
+            p{
+                margin: 10px 0;
+                img{
+                    width: 100%; height: 100%;
+                    border-radius: 8px;
+                }
+            }
+        }
+    }
+
+    // 제작사
+    .detailCompanyList{
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+
+        li{
+            width: 80px;
+
+            p{
+                width: 100%; height: 80px;
+                margin: 10px 0;
+                padding: 8px;
+                background-color: #eee;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+    
+                .noLogoPath{
+                    position: absolute;
+                    display: block;
+                    left: 50%; top: 50%;
+                    transform: translate(-50%, -50%);
+                    font-weight: bold;
+                    color: #333;
+                }
+                img{width: 100%; height: 100%; object-fit: contain;}
+            }
+            span{
+                display: -webkit-box;       /* 플렉스 박스 대신 웹킷 박스 모델 사용 */
+                -webkit-line-clamp: 2;      /* 최대 2줄까지 보이게 */
+                -webkit-box-orient: vertical; /* 세로 방향으로 박스 배치 */
+                overflow: hidden;           /* 넘친 텍스트 숨김 */
+                text-overflow: ellipsis;    /* 넘칠 때 ... 표시 */
+            }
+        }
+
+    }
+}
+
+.detailVideoBox{
+    width: 100%;
+    padding: 50px;
+
+    .detailVideoBoxTitle{font-size: 20px;}
+
+    li{
+        &:first-of-type{margin-top: 25px;}
+        margin-top: 50px;
+        
+        a{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .videoThumb{
+                height: 500px;
+                margin-bottom: 20px;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+
+                img{width: 100%; height: 100%;}
+
+                &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0; top: 0;
+                    width: 100%; height: 100%;
+                    background-color: rgba($color: #000000, $alpha: 0.6);
+                    z-index: 2;
+                    opacity: 0;
+                    transition: .3s;
+                    border-radius: 8px;
+                }
+                &::after{
+                    content: '유튜브 보러가기 →';
+                    display: block;
+                    position: absolute;
+                    left: 50%; top: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 20px;
+                    z-index: 3;
+                    opacity: 0;
+                    transition: .3s;
+                }
+            }
+
+            span{
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+
+        &:hover .videoThumb::before,
+        &:hover .videoThumb::after{
+            opacity: 1;
+        }
+    }
+}
+
+hr{
+    margin: 0 50px 90px;
+}
+
+.detailSliderBox{
+    margin: 0 50px 90px;
+
+    span{font-size: 20px;}
+
+    .detailSlider{
+        font-weight: 300;
+
+        .swiper-slide{width: 18%;}
+    }
+}
+
+@import './res_detail';

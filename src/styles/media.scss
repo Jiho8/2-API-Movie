@@ -1,0 +1,82 @@
+// Tv & Movie 페이지
+
+// 페이지 제목
+.pageTitle{
+    text-align: center;
+    margin: 150px 0 0;
+}
+
+// 검색창
+.searchBox{
+    margin: 20px 50px;
+
+    // 입력창 박스
+    .inputWrapper{
+        width: 200px;
+        position: relative;
+        display: inline-block;
+        margin-right: 15px;
+
+        &:not(:focus-within) {
+            border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+        }
+    }
+
+    // 입력창
+    input{
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        color: #eee;
+        padding: 12px;
+
+        &:focus{outline: none;}
+
+        /* 자식 요소에 따라 부모 스타일 변경하고 싶을 때: focus-within*/
+        &:focus-within{
+            border-bottom: 2px solid red;
+        }
+    }
+
+    // 검색 버튼
+    button{
+        padding: 12px 24px;
+        border: 1px solid #eee;
+        border-radius: 20px;
+        
+        &:hover{
+            border: 1px solid red;
+            background-color: red;
+        }
+    }
+}
+
+// 컨텐츠 그리드
+.tvBox{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    row-gap: 25px;
+    column-gap: 15px;
+    margin: 50px;
+
+    .imgTv{
+        padding-top: 150%;
+        border-radius: 15px;
+        position: relative;
+    }
+
+    a:hover{
+        .textTv h3{color: red;}
+        .btn{display: block;}
+        .imgTv::before{opacity: 0.6;}
+    }
+
+    .textTv{
+        width: 200px;
+
+        h3{margin: 15px 0;}
+        b{color: red;}
+    }
+}
+
+@import './res_media';
