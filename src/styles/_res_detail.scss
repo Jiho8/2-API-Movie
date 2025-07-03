@@ -10,14 +10,14 @@
 @media (max-width: 1200px){
     // poster image
     .detailContents-left{
-        width: 50%; height: auto;
+        width: 50%;
         border-radius: 18px;
         overflow: hidden;
 
         img{object-fit: cover;}
     }
 
-    .detailContents-right{width: 60%;}
+    .detailContents-right{width: 50%;}
 
     .detailVideoBox{
         li{
@@ -58,7 +58,7 @@
 
     // poster image
     .detailContents-left{
-        width: 100%; height: auto;
+        width: 100%;
     }
 
     .detailContents-right{
@@ -94,7 +94,7 @@
     .detailSliderBox{
         margin: 0 5% 90px;
 
-        .swiper-slide{width: 40%;}
+        .swiper-slide{width: 40% !important;}
     }
 }
 
@@ -107,60 +107,54 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -------------------------------------------------------------------------------- */
-@media (max-width: 768px){
+@media (max-width: 480px){
     // 뒤로가기 버튼
     .detailBackBtn{
-        top: 100px; left: 5%;
-        transform: translateX(-5%);
+        top: 95px;
+        width: 16px; height: 16px;
+        font-size: 0.9rem;
     }
 
     // detail 내용
-    .detailContents{
-        flex-direction: column;
-        margin-top: -375px;
-        padding: 0 5%;
-        column-gap: 0;
-        gap: 30px;
-    }
-
-    // poster image
-    .detailContents-left{
-        width: 100%; height: auto;
-    }
+    .detailContents{margin-top: -385px;}
 
     .detailContents-right{
-        width: 100%;
-
-        h3{font-size: 2.2rem;}
+        h3{font-size: 2rem;}
 
         // 개봉일 및 런타임
-        .detailDateNTime{font-size: 1.2rem;}
+        .detailDateNTime{
+            margin: 8px 0 16px;
+            gap: 15px;
+            font-size: 1rem;
+        }
         
         // 장르
         .detailGenres{
-            p{font-size: 0.9rem;}
+            p{
+                padding: 5px 10px;
+                margin-right: 8px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .detailOverview{
+            margin: 16px 0;
+            font-size: 0.95rem;
         }
     }
 
     .detailVideoBox{
-        padding: 50px 5%;
-
+        .detailVideoBoxTitle{font-size: 1.12rem;}
         li{
             a{
                 .videoThumb{
-                    height: 250px;
+                    height: 200px;
+                    &::after{font-size: 1rem;}
                 }
+                span{font-size: 1rem;}
             }
         }
     }
 
-    hr{
-        margin: 0 5% 50px;
-    }
-
-    .detailSliderBox{
-        margin: 0 5% 90px;
-
-        .swiper-slide{width: 40%;}
-    }
+    .detailSliderBox{margin: 0 5% 50px;}
 }

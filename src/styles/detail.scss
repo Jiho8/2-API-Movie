@@ -1,5 +1,5 @@
 .detail{
-    position: reletive;
+    position: relative;
 }
 
 // 뒤로가기 버튼
@@ -27,18 +27,20 @@
 
 // detail 내용
 .detailContents{
-    margin-top: -350px;
-    z-index: 900;
-    padding: 0 50px;
     position: relative;
     display: flex;
     justify-content: center;
     column-gap: 40px;
+    padding: 0 50px;
+    margin-top: -350px;
+    z-index: 900;
 }
 
 // poster image
 .detailContents-left{
-    width: 45%; height: auto; max-height: 630px;
+    width: 45%;
+    // max-height: 630px;
+    aspect-ratio: 2/3;
     border-radius: 18px;
     overflow: hidden;
 
