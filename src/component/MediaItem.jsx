@@ -15,7 +15,7 @@ function MediaItem({ data, type }) {
 
         <div className='textTv'>
             <h3>{type === 'movie' ? data.title : data.name}</h3>
-            {data.vote_average && <span><b>★</b> {data.vote_average}</span>}
+            {data.vote_average > 0 && <span><b>★</b> {data.vote_average}</span>}
         </div>
     </NavLink>
   )
