@@ -128,7 +128,7 @@ function DetailMovie() {
                   {
                     detailData?.casts?.cast?.slice(0, 4).map((cast)=>(
                       <li key={cast.id}>
-                        <p>
+                        <p className='noPathBox'>
                           {
                             cast.profile_path
                               ? <img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt="cast_img" />
@@ -151,7 +151,7 @@ function DetailMovie() {
                   {
                     detailData?.production_companies?.slice(0, 3).map((prod) => (
                       <li key={prod.id}>
-                        <p>
+                        <p className='noPathBox'>
                           {
                             prod.logo_path
                             ? <img src={`https://image.tmdb.org/t/p/w200/${prod.logo_path}`} alt="company" />

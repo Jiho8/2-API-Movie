@@ -32,7 +32,7 @@
     justify-content: center;
     column-gap: 40px;
     padding: 0 50px;
-    margin-top: -350px;
+    margin-top: -48vh;
     z-index: 900;
 }
 
@@ -102,11 +102,8 @@
         li{
             width: 150px; height: auto;
             p{
-                margin: 10px 0;
-                img{
-                    width: 100%; height: 100%;
-                    border-radius: 8px;
-                }
+                aspect-ratio: 2 / 3;
+                height: 100%;
             }
         }
     }
@@ -121,23 +118,8 @@
             width: 80px;
 
             p{
-                width: 100%; height: 80px;
-                margin: 10px 0;
                 padding: 8px;
-                background-color: #eee;
-                border-radius: 8px;
-                overflow: hidden;
-                position: relative;
-    
-                .noLogoPath{
-                    position: absolute;
-                    display: block;
-                    left: 50%; top: 50%;
-                    transform: translate(-50%, -50%);
-                    font-weight: bold;
-                    color: #333;
-                }
-                img{width: 100%; height: 100%; object-fit: contain;}
+                height: 80px;
             }
             span{
                 display: -webkit-box;       /* 플렉스 박스 대신 웹킷 박스 모델 사용 */
@@ -148,7 +130,27 @@
             }
         }
 
+        
     }
+}
+
+.noPathBox{
+    width: 100%;
+    margin: 10px 0;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+    .noLogoPath{
+        position: absolute;
+        display: block;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        color: #333;
+    }
+    img{width: 100%; height: 100%; object-fit: contain;}
 }
 
 .detailVideoBox{
