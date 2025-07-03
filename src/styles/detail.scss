@@ -70,6 +70,7 @@
     .detailGenres{
         display: flex;
         align-items: center;
+        margin-bottom: 20px;
     
         p{
             padding: 7px 14px;
@@ -82,7 +83,7 @@
     // overview
     .detailOverview{
         display: inline-block;
-        margin: 20px 0;
+        margin-bottom: 20px;
         line-height: 1.4;
     }
 
@@ -152,7 +153,8 @@
 
 .detailVideoBox{
     width: 100%;
-    padding: 50px;
+    margin: 50px 0 0;
+    padding: 0 50px;
 
     .detailVideoBoxTitle{font-size: 20px;}
 
@@ -213,7 +215,7 @@
 }
 
 hr{
-    margin: 0 50px 90px;
+    margin: 50px;
 }
 
 .detailSliderBox{

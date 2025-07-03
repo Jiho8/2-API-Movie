@@ -76,7 +76,7 @@
     }
 
     .detailVideoBox{
-        padding: 50px 5%;
+        padding: 0 5%;
 
         li{
             a{
@@ -87,9 +87,7 @@
         }
     }
 
-    hr{
-        margin: 0 5% 50px;
-    }
+    hr{margin: 50px 5%;}
 
     .detailSliderBox{
         margin: 0 5% 90px;
@@ -130,6 +128,7 @@
         
         // 장르
         .detailGenres{
+            margin-bottom: 16px;
             p{
                 padding: 5px 10px;
                 margin-right: 8px;
@@ -138,9 +137,11 @@
         }
 
         .detailOverview{
-            margin: 16px 0;
+            margin-bottom: 16px;
             font-size: 0.95rem;
         }
+
+        .detailCastList, .detailVote{margin-bottom: 16px;}
     }
 
     .detailVideoBox{

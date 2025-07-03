@@ -192,6 +192,14 @@ footer{
   font-size: 20px;
 }
 
+// 검색 결과 없음
+.noDataBox{
+  text-align: center;
+  padding: 50px 0;
+  color: #eee;
+  font-size: 1.2rem;
+}
+
 
 // 로딩
 .loadingContainer {

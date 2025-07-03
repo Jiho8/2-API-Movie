@@ -98,40 +98,49 @@ function DetailTv() {
             </div>
 
             {/* 장르 */}
-            <div className='detailGenres'>
-              {detailData.genres?.map((item) => (
-                <p key={item.id}>{item.name}</p>
-              ))}
-            </div>
+            {detailData?.genres?.length > 0 && (
+              <div className='detailGenres'>
+                {detailData.genres?.map((item) => (
+                  <p key={item.id}>{item.name}</p>
+                ))}
+              </div>
+            )}
 
             {/* overview */}
-            <span className='detailOverview'>
-              {detailData.overview}
-            </span>
+            {detailData?.overview !== "" && (
+              <span className='detailOverview'>
+                {detailData.overview}
+              </span>
+            )}
 
             {/* 별점 */}
-            {detailData.vote_average && 
+            {detailData?.vote_average > 0 && (
               <p className='detailVote'>
                 ★ {detailData.vote_average}
               </p>
-            }
+            )}
 
             {/* 주요배우 */}
-            <div className='detailCastBox'>
-              <p>출연</p>
-              <ul className='detailCastList'>
-                {
-                  detailData?.credits?.cast?.slice(0, 4).map((cast)=>(
-                    <li key={cast.id}>
-                      <p>
-                        <img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt="cast_img" />
-                      </p>
-                      <span>{cast.name}</span>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
+            {detailData?.credits?.cast?.length > 0 && (
+              <div className='detailCastBox'>
+                <p>출연</p>
+                <ul className='detailCastList'>
+                  {
+                    detailData?.credits?.cast?.slice(0, 4).map((cast)=>(
+                      <li key={cast.id}>
+                        <p>
+                          {cast.profile_path
+                            ? <img src={`https://image.tmdb.org/t/p/w200/${cast.profile_path}`} alt="cast_img" />
+                            : <span className='noLogoPath'>ZFLIX</span>
+                          }
+                        </p>
+                        <span>{cast.name}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )}
 
             {/* 제작사 */}
             {detailData?.production_companies?.length > 0 && (
@@ -159,7 +168,7 @@ function DetailTv() {
         </div>
 
         {/* 비디오 */}
-        {detailData?.videos?.results && (
+        {detailData?.videos?.results?.length > 0 && (
           <div className='detailVideoBox'> 
             <span className='detailVideoBoxTitle'>📹 관련 영상 보기</span>
             <ul className='detailVideoList'>
@@ -186,7 +195,7 @@ function DetailTv() {
         <hr />
 
         {/* 비슷한 컨텐츠 */}
-        {similarContents.length > 0 && (
+        {similarContents?.length > 0 && (
           <div className='detailSliderBox'>
             <span>비슷한 컨텐츠</span>
             <Swiper
