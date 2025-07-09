@@ -1,5 +1,4 @@
 
-/* ![img-thumb-05](https://github.com/user-attachments/assets/cd8ff719-4670-4f50-9bd4-7ab857d9c163) */
 ![zflix_readme](https://github.com/user-attachments/assets/b5cff5e0-91b6-47e4-a626-d65f79ee4923)
 
 ## 🎞 소개
