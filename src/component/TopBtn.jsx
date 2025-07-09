@@ -7,7 +7,7 @@ function TopBtn({ className }) {
 
   return (
     <div className={className} onClick={upScroll}>
-        <img src="/imgs/img-topBtn.svg" alt="top"/>
+      <img src="/imgs/img-topBtn.svg" alt="top"/>
     </div>
   )
 }

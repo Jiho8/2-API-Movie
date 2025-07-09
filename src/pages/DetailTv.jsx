@@ -39,6 +39,7 @@ function DetailTv() {
           }
         });
 
+        // detailData 변수에 요청 결과 할당 
         const data = detailRes.data;
         setDetailData(data);
     
@@ -56,6 +57,7 @@ function DetailTv() {
             }
           });
 
+          // 랜덤으로 순서 정하여 10개의 데이터만 변수에 할당
           const shuffled = similarRes.data.results.sort(() => 0.5 - Math.random());
           setSimilarContents(shuffled.slice(0, 10));
         }
@@ -250,7 +252,7 @@ function DetailTv() {
           <div className='detailVideoBox'> 
             <span className='detailVideoBoxTitle'>📹 관련 영상 보기</span>
             
-            {/* 영상 리스트. 유튜브만 최대 3개만 표시. */}
+            {/* 영상 리스트 */}
             <ul className='detailVideoList'>
               {
                 validVideos.map((video) => (

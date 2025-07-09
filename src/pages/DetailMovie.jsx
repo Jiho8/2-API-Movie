@@ -24,7 +24,7 @@ function DetailMovie() {
   // 페이지 진입 시 최상단으로 이동
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  }, [])
   
   // 데이터 요청 및 유효성 검사
   useEffect(() => {
@@ -39,6 +39,7 @@ function DetailMovie() {
           }
         });
 
+        // detailData 변수에 요청 결과 할당 
         const data = detailRes.data;
         setDetailData(data);
     
@@ -56,6 +57,7 @@ function DetailMovie() {
             }
           });
 
+          // 랜덤으로 순서 정하여 10개의 데이터만 변수에 할당
           const shuffled = similarRes.data.results.sort(() => 0.5 - Math.random());
           setSimilarContents(shuffled.slice(0, 10));
         }
@@ -216,7 +218,7 @@ function DetailMovie() {
           <div className='detailVideoBox'> 
             <span className='detailVideoBoxTitle'>📹 관련 영상 보기</span>
 
-            {/* 영상 리스트. 유튜브만 최대 3개만 표시. */}
+            {/* 영상 리스트 */}
             <ul className='detailVideoList'>
               {
                 validVideos.map((video) => (

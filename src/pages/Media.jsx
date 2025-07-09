@@ -17,7 +17,7 @@ function Media() {
     const [ isSearched, setIsSearched ] = useState(false);  // 검색 상태 관리
     
     const { type } = useParams();    // tv 또는 movie
-    const { state, key } = useLocation(); // title 전달 받기
+    const { state } = useLocation(); // title 전달 받기
     
     const t1 = ['movie', 'tv'].includes(type) ? type : 'tv';
     const t2 = state?.t2 || 'popular';
@@ -42,8 +42,6 @@ function Media() {
             }
 
             setPageCount(pageNum);
-
-            // window.scrollTo(0, 0);
         } catch (error) {
             console.error('데이터 요청 실패:', error);
         } finally {
@@ -81,9 +79,8 @@ function Media() {
         setPageCount(1);   // 페이지 카운트 초기화
         loadPage(1, false) // 첫 페이지 로드
         setIsSearched(false);  // 검색 상태 초기화
-
         window.scrollTo(0, 0); // 항상 최상단으로 스크롤
-    }, [t1, loadPage, key])
+    }, [t1, loadPage])
 
     if (loading && list?.length === 0) return <Loading/>;
 
