@@ -98,7 +98,7 @@ function DetailTv() {
           backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://image.tmdb.org/t/p/original${detailData.backdrop_path}')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          height: '70vh',
+          height: '100vh',
           position: 'relative'
           }}>
         </div>
