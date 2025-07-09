@@ -6,13 +6,15 @@ const instance = axios.create({
     baseURL: "https://api.themoviedb.org/3",
     params: {
         api_key: 'f89a6c1f22aca3858a4ae7aef10de967',
-        language: 'ko-kr'
+        language: 'ko-kr',
+        region: 'KR'
     }
 });
 
 // zustand 정의
 export const useStore = create((set) => ({
-    data:{
+    // 데이터
+    data: {
         mPop: [],
         mTop: [],
         sPop: [],
@@ -27,7 +29,6 @@ export const useStore = create((set) => ({
                 instance.get('/movie/top_rated'),
                 instance.get('/tv/popular'),
                 instance.get('/tv/top_rated')])
-                
         set({ 
             data:{
                 mPop:res[0].data.results,

@@ -11,17 +11,22 @@ function App() {
 
   return (
     <Router>
+      {/* header */}
       <Header />
 
+      {/* contents */}
       <main>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/:type' element={<Media/>}/>
+
+          {/* detail page */}
           <Route path='/movie/:id' element={<DetailMovie/>}/>
           <Route path='/tv/:id' element={<DetailTv/>}/>
         </Routes>
       </main>
 
+      {/* footer */}
       <Footer />
     </Router>
   );

@@ -4,9 +4,12 @@ import { NavLink } from 'react-router-dom'
 function Footer() {
   return (
     <footer>
+      {/* 로고 */}
       <h2>
         <NavLink to='/'>ZFLIX</NavLink>
       </h2>
+
+      {/* 각 메뉴 */}
       <div className='footerBox'>
         <div className='footerMenu'>
           <NavLink to='/'>Home</NavLink>

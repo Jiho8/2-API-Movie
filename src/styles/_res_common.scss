@@ -97,6 +97,11 @@
       }
     }
   }
+
+  // 탑버튼
+  .topBtn{
+    right: 5%; bottom: 5%;
+  }
 }
 
 /* -----------------------------------------------------------------------------
@@ -128,6 +133,7 @@
     }
   }
 
+  .mainListCon::before,
   .mainListCon{border-radius: 10px !important;}
 
   footer{

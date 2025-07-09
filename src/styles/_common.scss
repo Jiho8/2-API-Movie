@@ -200,6 +200,14 @@ footer{
   font-size: 1.2rem;
 }
 
+// 탑버튼
+.topBtn{
+  position: fixed;
+  right: 50px; bottom: 50px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
 
 // 로딩
 .loadingContainer {
