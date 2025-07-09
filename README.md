@@ -1,6 +1,8 @@
 
+/* ![img-thumb-05](https://github.com/user-attachments/assets/cd8ff719-4670-4f50-9bd4-7ab857d9c163) */
+![zflix_readme](https://github.com/user-attachments/assets/b5cff5e0-91b6-47e4-a626-d65f79ee4923)
 
-## ✨ 소개
+## 🎞 소개
 <b>ZFLIX</b>는 TheMovieDB API를 기반으로, 사용자가 원하는 콘텐츠를 빠르게 찾고 <br> 
 더 풍부한 정보를 탐색할 수 있도록 설계한 미디어 정보 플랫폼입니다. <br>
 
@@ -119,13 +121,16 @@ https://zflix-one.vercel.app
 5. MainList.jsx : `MainItem.jsx` 내 각 아이템.
 6. MediaItem.jsx : Movie, TV 페이지 내 각 아이템 컴포넌트.
 7. NoData.jsx : 검색 시 데이터 없음 표시용 컴포넌트.
+8. TopBtn.jsx : 최상단으로 스크롤 이동하기 위한 탑버튼.
 
 ### 페이지 목록
 - [홈](https://zflix-one.vercel.app)
 - [영화 리스트](https://zflix-one.vercel.app/movie)
 - [TV프로그램 리스트](https://zflix-one.vercel.app/tv)
-- [영화 상세](https://zflix-one.vercel.app/movie/'id')
-- [TV프로그램 상세](https://zflix-one.vercel.app/tv/'id')
+
+(상세 페이지는 미디어 ID를 기반으로 구성됩니다. 아래는 ID가 포함된 예시 링크이므로 참고 바랍니다.)
+- [영화 상세](https://zflix-one.vercel.app/movie/1241982)
+- [TV프로그램 상세](https://zflix-one.vercel.app/tv/5092)
 
 ## 💥 이슈 및 해결
 
