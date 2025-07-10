@@ -24,7 +24,7 @@ function DetailMovie() {
   // 페이지 진입 시 최상단으로 이동
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  })
   
   // 데이터 요청 및 유효성 검사
   useEffect(() => {
@@ -42,8 +42,24 @@ function DetailMovie() {
         // detailData 변수에 요청 결과 할당 
         const data = detailRes.data;
         setDetailData(data);
+
+        // 2. 영상 데이터 필터링
+        const checkVideoExistence = async (video) => {
+          const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.key}`;
+          try {
+            const res = await fetch(url);
+            return res.ok ? video : null;
+          } catch {
+            return null;
+          }
+        };
+        
+        const youtubeVideos = data.videos?.results?.filter(v => v.site === 'YouTube') || [];
+        const checked = await Promise.all(youtubeVideos.map(checkVideoExistence));
+        const filtered = checked.filter(v => v !== null).slice(0, 3);
+        setValidVideos(filtered);
     
-        // 2. 장르 기반 유사 컨텐츠 불러오기
+        // 3. 장르 기반 유사 컨텐츠 불러오기
         if (data.genres?.length > 0) {
           const genreIds = detailData?.genres?.map(g => g.id).join(',');
           const similarRes = await axios.get(`https://api.themoviedb.org/3/discover/movie`, {
@@ -61,24 +77,7 @@ function DetailMovie() {
           const shuffled = similarRes.data.results.sort(() => 0.5 - Math.random());
           setSimilarContents(shuffled.slice(0, 10));
         }
-
-        // 3. YouTube 영상 필터링
-        const youtubeVideos = data.videos?.results?.filter(v => v.site === 'Youtube') || [];
-        const valid = [];
-
-        for (const video of youtubeVideos) {
-          const thumbUrl = `https://img.youtube.com/vi/${video.key}/hqdefault.jpg`;
-
-          try {
-            const res = await fetch(thumbUrl, { method: 'HEAD' });
-            if (res.ok) valid.push(video);
-          } catch (e) {
-            console.warn(`썸네일을 찾을 수 없습니다.: ${video.name}`, e);
-          }
-          
-          if (valid.length === 3) break; // 최대 3개까지만
-        }
-        setValidVideos(valid);
+        
       } catch (err) {
         console.error('데이터 요청 실패:', err);
       } finally {

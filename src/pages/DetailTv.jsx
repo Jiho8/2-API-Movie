@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
 import MainItem from '../component/MainItem';
 import Loading from '../component/Loading';
 import TopBtn from '../component/TopBtn';
+import SeasonAccordion from '../component/SeasonAccordion';
 import '../styles/detail.scss';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 function DetailTv() {
   // 현재 경로에서 id 추출
@@ -19,12 +23,11 @@ function DetailTv() {
   const [ loading, setLoading ] = useState(true);       // 로딩 상태 관리
   const [ detailData, setDetailData ] = useState([]);   // 해당 컨텐츠 상세 내용
   const [ similarContents, setSimilarContents ] = useState([]);  // 같은 장르의 다른 컨텐츠
-  const [ validVideos, setValidVideos ] = useState([]); // 유효한 비디오 관리
 
   // 페이지 진입 시 최상단으로
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  })
   
   // 데이터 요청 및 유효성 검사
   useEffect(() => {
@@ -61,24 +64,6 @@ function DetailTv() {
           const shuffled = similarRes.data.results.sort(() => 0.5 - Math.random());
           setSimilarContents(shuffled.slice(0, 10));
         }
-
-        // 3. YouTube 영상 필터링
-        const youtubeVideos = data.videos?.results?.filter(v => v.site === 'Youtube') || [];
-        const valid = [];
-
-        for (const video of youtubeVideos) {
-          const thumbUrl = `https://img.youtube.com/vi/${video.key}/hqdefault.jpg`;
-
-          try {
-            const res = await fetch(thumbUrl, { method: 'HEAD' });
-            if (res.ok) valid.push(video);
-          } catch (e) {
-            console.warn(`썸네일을 찾을 수 없습니다.: ${video.name}`, e);
-          }
-          
-          if (valid.length === 3) break; // 최대 3개까지만
-        }
-        setValidVideos(valid);
       } catch (err) {
         console.error('데이터 요청 실패:', err);
       } finally {
@@ -91,7 +76,7 @@ function DetailTv() {
   
   // true 시 로딩 표시
   if (loading) return <Loading/>;
-
+  
   return (
     detailData && (
       <div className='detail'>
@@ -194,7 +179,7 @@ function DetailTv() {
                 {/* 제작진 리스트. 최대 4명만 표시. */}
                 <ul className='detailCastList'>
                   {
-                    detailData?.credits?.crew?.filter(c => c.job === 'Director').map((crew)=>(
+                    detailData?.credits?.crew?.filter(c => c.job === 'Director').slice(0, 3).map((crew)=>(
                       <li key={crew.id}>
                         {/* 이미지 */}
                         <p className='noPathBox'>
@@ -247,33 +232,11 @@ function DetailTv() {
           </div>
         </div>
 
-        {/* 유튜브 영상 정보. 데이터가 있을 때만 표시. */}
-        {validVideos?.length > 0 && (
-          <div className='detailVideoBox'> 
-            <span className='detailVideoBoxTitle'>📹 관련 영상 보기</span>
-            
-            {/* 영상 리스트 */}
-            <ul className='detailVideoList'>
-              {
-                validVideos.map((video) => (
-                  <li key={video.id}>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${video.key}`}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      {/* 썸네일 이미지 */}
-                      <p className='videoThumb'>
-                        <img src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`} alt={video.name} />
-                      </p>
-
-                      {/* 영상 제목 */}
-                      <span>{video.name}</span>
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+        {/* 시즌 정보. 데이터가 있을 때만 표시. */}
+        {detailData?.seasons?.length > 0 && (
+          <div className='detailSeasonBox'> 
+            <span className='detailSeasonBoxTitle'>📺 시즌 정보</span>
+            <SeasonAccordion data={detailData.seasons} className={'seasonAccordion'}/>
           </div>
         )}
 
@@ -285,9 +248,7 @@ function DetailTv() {
           <div className='detailSliderBox'>
             <span>비슷한 컨텐츠</span>
             <Swiper
-              modules={[Autoplay]}
               slidesPerView={'auto'}
-              autoplay={false}
               loop={true}
               spaceBetween={15}
               grabCursor={true}

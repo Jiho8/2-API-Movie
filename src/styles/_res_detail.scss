@@ -87,6 +87,10 @@
         }
     }
 
+    .detailSeasonBox{
+        padding: 0 5%;
+    }
+
     hr{margin: 50px 5%;}
 
     .detailSliderBox{
@@ -157,5 +161,49 @@
         }
     }
 
-    .detailSliderBox{margin: 0 5% 50px;}
+    .detailSeasonBox{
+        .detailSeasonBoxTitle{font-size: 1.12rem;}
+
+        .seasonAccordion{
+            .seasonItem{
+                .seasonTitle{font-size: 0.95rem;}
+        
+                .seasonContent{
+                    width: 100%;
+                    gap: 16px;
+                    padding: 14px;
+        
+                    .thumbWrap{
+                        max-width: 125px;
+                        width: 40%;
+        
+                        .noImage {width: 125px;}
+                    }
+        
+                    .textInfo {
+                        width: 60%;
+                        font-size: 0.9rem;
+        
+                        .episode{margin: 5px 0;}
+        
+                        .overview {
+                            font-size: 0.8rem;
+
+                            display: -webkit-box;       
+                            -webkit-line-clamp: 7;      
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;           
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .detailSliderBox{
+        margin: 0 5% 50px;
+
+        span{font-size: 1.12rem;}
+    }
 }

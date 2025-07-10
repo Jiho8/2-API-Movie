@@ -134,6 +134,7 @@
     }
 }
 
+// 이미지 없을 때
 .noPathBox{
     width: 100%;
     margin: 10px 0;
@@ -153,22 +154,27 @@
     img{width: 100%; height: 100%; object-fit: contain;}
 }
 
+// movie - 관련 유튜브 영상
 .detailVideoBox{
     width: 100%;
     margin: 50px 0 0;
     padding: 0 50px;
 
+    // 제목
     .detailVideoBoxTitle{font-size: 20px;}
 
+    // 리스트
     li{
         &:first-of-type{margin-top: 25px;}
         margin-top: 50px;
         
+        // 각 영상 링크
         a{
             display: flex;
             flex-direction: column;
             justify-content: center;
 
+            // 썸네일 이미지
             .videoThumb{
                 height: 500px;
                 margin-bottom: 20px;
@@ -178,6 +184,7 @@
 
                 img{width: 100%; height: 100%;}
 
+                // hover 시 나타날 배경 및 텍스트
                 &::before{
                     content: '';
                     display: block;
@@ -203,6 +210,7 @@
                 }
             }
 
+            // 영상 제목
             span{
                 text-align: center;
                 font-size: 18px;
@@ -216,15 +224,115 @@
     }
 }
 
-hr{
-    margin: 50px;
+// tv - 시즌 정보
+.detailSeasonBox{
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 50px;
+
+    // 제목
+    .detailSeasonBoxTitle{font-size: 20px;}
+
+    // 리스트 아코디언
+    .seasonAccordion{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 25px;
+    
+        // 각 시즌 정보
+        .seasonItem{
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+    
+            // 시즌 제목
+            .seasonTitle{
+                width: 100%;
+                padding: 15px 20px;
+                background: rgba($color: #333, $alpha: 0.6);
+                font-size: 16px;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                // 우측 화살표 아이콘
+                .arrow{
+                    font-size: 10px;
+                    transition: transform 0.3s ease;
+
+                    // 애니메이션
+                    &.up {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+    
+            // 내용
+            .seasonContent{
+                display: flex;
+                gap: 20px;
+                padding: 16px;
+                background: rgba($color: #333, $alpha: 0.6);
+                border-top: 1px solid #333;
+    
+                // 이미지 wrap
+                .thumbWrap{
+                    width: 150px;
+                    min-width: 100px;
+                    aspect-ratio: 2/3;
+    
+                    img{
+                        width: 100%;
+                        border-radius: 7px;
+                    }
+    
+                    // 이미지 없을 때
+                    .noImage {
+                        width: 150px;
+                        border-radius: 7px;
+                        aspect-ratio: 2/3;
+                        background: #eee;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        color: #333;
+                    }
+                }
+    
+                // 텍스트 정보
+                .textInfo {
+                    flex: 1;
+                    font-size: 16px;
+    
+                    .episode{margin: 5px 0;}
+    
+                    .overview {
+                        margin-top: 10px;
+                        line-height: 1.4;
+                        font-size: 14px;
+                        font-weight: 300;
+                        color: #ddd;
+                    }
+                }
+            }
+        }
+    }
 }
 
+// 구분선
+hr{margin: 50px;}
+
+// 비슷한 컨텐츠
 .detailSliderBox{
     margin: 0 50px 90px;
 
+    // 제목
     span{font-size: 20px;}
-
+    
+    // 슬라이더
     .detailSlider{
         font-weight: 300;
 
