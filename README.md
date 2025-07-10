@@ -120,14 +120,15 @@ https://zflix-one.vercel.app
 5. MainList.jsx : `MainItem.jsx` 내 각 아이템.
 6. MediaItem.jsx : Movie, TV 페이지 내 각 아이템 컴포넌트.
 7. NoData.jsx : 검색 시 데이터 없음 표시용 컴포넌트.
-8. TopBtn.jsx : 최상단으로 스크롤 이동하기 위한 탑버튼.
+8. SeasonAccordion.jsx : TV프로그램 상세 페이지 내 시즌 정보 아코디언.
+9. TopBtn.jsx : 최상단으로 스크롤 이동하기 위한 탑버튼.
 
 ### 페이지 목록
 - [홈](https://zflix-one.vercel.app)
 - [영화 리스트](https://zflix-one.vercel.app/movie)
 - [TV프로그램 리스트](https://zflix-one.vercel.app/tv)
 
-(상세 페이지는 미디어 ID를 기반으로 구성됩니다. 아래는 ID가 포함된 예시 링크이므로 참고 바랍니다.)
+- (상세 페이지는 미디어 ID를 기반으로 구성됩니다. 아래는 ID가 포함된 예시 링크이므로 참고 바랍니다.)
 - [영화 상세](https://zflix-one.vercel.app/movie/1241982)
 - [TV프로그램 상세](https://zflix-one.vercel.app/tv/5092)
 
@@ -147,5 +148,23 @@ if (window.history.scrollRestoration) {
 
 
 ### 2. 유효하지 않은 영상 데이터 처리
-- API 데이터 내 영상 관련 정보가 있지만, 유튜브 자체에서 비공개 처리되거나 삭제되어 썸네일 이미지 및 링크가 유효하지 않음.
-- **해결**: 데이터 요청 후 
+- 상세 페이지에 영상이 표시되지 않거나, 썸네일이 깨지고 클릭해도 영상이 존재하지 않는 문제 발생
+- 원인: TMDB API에서 제공하는 영상 정보 중 일부는 유튜브에서 비공개되었거나 삭제되어, 썸네일 이미지 또는 영상 링크가 유효하지 않음.
+- **해결 방안**: 유튜브 oEmbed API를 통해 실제 존재하는 영상인지 확인한 뒤, 유효한 영상만 필터링하여 최대 3개까지 표시
+```
+// `DetailMovie.jsx` 내 영상 필터링 처리
+const checkVideoExistence = async (video) => {
+  const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.key}`;
+  try {
+    const res = await fetch(url);
+    return res.ok ? video : null;
+  } catch {
+    return null;
+  }
+};
+```
+
+### 3. 허전한 레이아웃 변경
+- TV 프로그램의 시즌 정보를 Swiper로 보여주던 중, `overview` 등의 정보가 부족한 경우 내용이 매우 짧고 포스터는 세로형이라 빈 부분이 많이 생기는 문제 발생
+- 원인: 컨텐츠 양이 적은데도 Swiper를 사용하여 UX적으로 불필요하게 느껴지고, 이미지가 공간을 충분히 채우지 못해 허전하게 느껴짐.
+- **해결 방안**: Swiper 대신 아코디언 형태로 변경하여 시즌 이름만 리스트 형태로 보여주고, 클릭 시 해당 상세 정보가 펼쳐지도록 구성하여 정보 밀도 및 사용성 개선.
