@@ -126,7 +126,7 @@
         // 개봉일 및 런타임
         .detailDateNTime{
             margin: 8px 0 16px;
-            gap: 15px;
+            gap: 10px;
             font-size: 1rem;
         }
         
@@ -144,8 +144,18 @@
             margin-bottom: 16px;
             font-size: 0.95rem;
         }
+        
+        .detailCastList, .detailVote{
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            li{width: 100px;}
+        }
 
-        .detailCastList, .detailVote{margin-bottom: 16px;}
+        .detailCompanyList{
+            gap: 10px;
+        }
     }
 
     .detailVideoBox{
@@ -203,6 +213,8 @@
 
     .detailSliderBox{
         margin: 0 5% 50px;
+
+        .swiper-slide{margin-right: 10px !important;}
 
         span{font-size: 1.12rem;}
     }

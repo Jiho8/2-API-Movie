@@ -125,7 +125,8 @@ function DetailMovie() {
             {/* 개봉일 및 런타임 */}
             <div className='detailDateNTime'>
               <p>{detailData.release_date}</p>
-              <span>{`${detailData.runtime} 분`}</span>
+              •
+              {detailData.runtime > 0 && <span>{`${detailData.runtime} 분`}</span>}
             </div>
 
             {/* 장르 정보. 데이터가 있을 때만 표시. */}
@@ -172,7 +173,36 @@ function DetailMovie() {
                         </p>
 
                         {/* 이름 */}
-                        <span>{cast.name}</span>
+                        <span>{cast.name} | {cast.character} 역</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )}
+
+            {/* 주요 제작진. 데이터가 있을 때만 표시 */}
+            {detailData?.casts?.crew?.filter(c => c.job === 'Director').length > 0 && (
+              <div className='detailCastBox'>
+                <p>감독</p>
+
+                {/* 제작진 리스트. 최대 4명만 표시. */}
+                <ul className='detailCastList'>
+                  {
+                    detailData?.casts?.crew?.filter(c => c.job === 'Director').slice(0, 3).map((crew)=>(
+                      <li key={crew.id}>
+                        {/* 이미지 */}
+                        <p className='noPathBox'>
+                          {
+                            // 이미지가 없을 경우 로고 표시
+                            crew.profile_path
+                              ? <img src={`https://image.tmdb.org/t/p/w200/${crew.profile_path}`} alt="cast_img" />
+                              : <span className='noLogoPath'>ZFLIX</span>
+                          }
+                        </p>
+
+                        {/* 이름 */}
+                        <span>{crew.name}</span>
                       </li>
                     ))
                   }
