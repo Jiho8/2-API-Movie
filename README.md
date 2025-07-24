@@ -61,7 +61,7 @@ https://zflix-one.vercel.app
 * 입력 시 관련 영화•TV 프로그램 목록 제공
 
 ### 3. React Swiper 모듈을 활용한 슬라이드 인터페이스
-* Home 페이지의 메인 배너 및 카테고리별 미디어 리스트(Top Rated, Trending 등)를 슬라이드 형태로 구성 
+* Home 페이지의 `메인 배너` 및 `카테고리별 미디어 리스트(Top Rated, Trending 등)`를 슬라이드 형태로 구성 
 * TV 프로그램의 관련 콘텐츠도 슬라이드로 구성하여 콘텐츠 흐름 유지
 * 모바일에서도 자연스러운 터치 UX 지원
 
